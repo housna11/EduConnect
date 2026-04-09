@@ -45,10 +45,12 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
      
+    // many to many
     public function etudiant(){
-    return $this->belongsToMany(User::class, 'cour_user');
+    return $this->belongsToMany(Cours::class, 'cour_user');
     }
 
+    //one to many
     public function professeur(){
         return $this->hasMany(Cours::class,'prof_id');
     }

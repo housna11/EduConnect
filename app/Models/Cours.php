@@ -14,6 +14,8 @@ class Cours extends Model
         'prof_id',
     ];
 
-
+     public function professeur(){
+        return $this->belongsTo(User::class,'prof_id');
+    }
    
 }

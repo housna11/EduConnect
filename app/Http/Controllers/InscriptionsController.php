@@ -19,15 +19,12 @@ class InscriptionsController extends Controller
         $user = User::findOrFail($validated['user_id']);
         $course = Cours::findOrFail($validated['cour_id']);
 
-        if ($user->etudiant()->where('cour_id'->$course_id)->exists()) {
+        if ($user->etudiant()->where('cour_id', $course->id)->exists()) {
             return response()->json(['message' =>'Déjà inscrit à ce cours']);
-
         };
         $user->etudiant()->attach($course->id);
 
         return response()->json(['message' =>'Inscription réussie']);
-
-
     }
 
 }

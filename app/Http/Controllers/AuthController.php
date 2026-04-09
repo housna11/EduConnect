@@ -19,11 +19,11 @@ class AuthController extends Controller
         ]);
             $validated['password'] = bcrypt($validated['password']);
             $user= User::create($validated);
-            $token = $user->createToken('auth_token')->plainTextToken;
+            // $token = $user->createToken('auth_token')->plainTextToken;
 
             return response()->json([
             'user' => $user,
-            'token' => $token,
+            // 'token' => $token,
         ]);
     }
 
@@ -50,7 +50,7 @@ class AuthController extends Controller
 
     //Deconx
     public function logout(Request $request) {
-        $request->user()->currentAccessToken()->delete();
+        $request->user()->tokens()->delete();
         return response()->json(['message' => 'Déconnexion réussie']);
 
     }

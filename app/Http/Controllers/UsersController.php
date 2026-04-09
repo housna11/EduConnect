@@ -36,7 +36,7 @@ class UsersController extends Controller
 
         $validated = $request->validate([
             'name' => 'sometimes|string',
-            'email' => 'sometimes|email|unique:users,email,' . $id,
+            'email' => 'sometimes|email|unique:users,email,',
             'password' => 'sometimes|string|min:6',
             'role' => 'sometimes|in:admin,professeur,etudiant',
         ]);
